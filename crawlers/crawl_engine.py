@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import json 
 import requests
 import sys 
 
@@ -41,3 +42,6 @@ if __name__ == "__main__":
     url = sys.argv[1]
     results = []
     crawl(url, 5, results)
+
+    with open('results.json', 'w') as j: 
+        j.write(json.dumps(results, indent=2))
