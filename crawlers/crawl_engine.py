@@ -35,11 +35,12 @@ def crawl(url, depth):
     for link in links:
         try:
             if 'http' in link['href']:
-                print(json.dumps(result, indent=2))
+                #print(json.dumps(result, indent=2))
+                print({'title': title, 'url': link['href']})
                 crawl(link['href'], depth - 1)
         except KeyError as e:
             print(e)
 
-if __name__ == "__main__":
-    url = "http://en.wikipedia.org/wiki"
-    crawl(url, 5)
+# if __name__ == "__main__":
+#     url = "http://en.wikipedia.org/wiki"
+#     crawl(url, 5)
