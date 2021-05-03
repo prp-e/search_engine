@@ -35,8 +35,11 @@ def crawl(url, depth, results):
 
     for link in links:
         if 'http' in link['href']:
-            print(link['href'])
-            crawl(link['href'], depth - 1, results)
+            try:
+                print(link['href'])
+                crawl(link['href'], depth - 1, results)
+            except KeyError as e:
+                print(e)
 
 if __name__ == "__main__":
     url = "http://en.wikipedia.org/wiki"
