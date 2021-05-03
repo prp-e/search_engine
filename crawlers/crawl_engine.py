@@ -3,7 +3,7 @@ import json
 import requests
 import sys 
 
-def crawl(url, depth, results):
+def crawl(url, depth):
     try:
         response = requests.get(url)
     except:
@@ -27,7 +27,6 @@ def crawl(url, depth, results):
         "description": description
     }
 
-    results.append(result)
     if depth == 0:
         return 
 
@@ -36,15 +35,11 @@ def crawl(url, depth, results):
     for link in links:
         try:
             if 'http' in link['href']:
-                print(link['href'])
+                print(json.dumps(result, indent=2))
                 crawl(link['href'], depth - 1, results)
         except KeyError as e:
             print(e)
 
 if __name__ == "__main__":
     url = "http://en.wikipedia.org/wiki"
-    results = []
-    crawl(url, 5, results)
-
-    with open('results.json', 'w') as j: 
-        j.write(json.dumps(results, indent=2))
+    crawl(url, 5)
