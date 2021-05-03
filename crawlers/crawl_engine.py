@@ -8,7 +8,7 @@ def crawl(url, depth):
         response = requests.get(url)
     except:
         print(f"Failed to crawl {url}")
-
+        
     content = BeautifulSoup(response.text, 'lxml')
 
     try:
@@ -24,7 +24,7 @@ def crawl(url, depth):
     result = {
         "url": url, 
         "title": title, 
-        "description": description
+        #"description": description
     }
 
     if depth == 0:
@@ -35,9 +35,8 @@ def crawl(url, depth):
     for link in links:
         try:
             if 'http' in link['href']:
-                #print(json.dumps(result, indent=2))
+                print(json.dumps(result, indent=2))
                 crawl(link['href'], depth - 1)
-                print({'title': title, 'url': link['href']})
         except KeyError as e:
             print(e)
 
