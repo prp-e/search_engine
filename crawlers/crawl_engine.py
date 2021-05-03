@@ -38,7 +38,7 @@ def crawl(url, depth):
                 print(json.dumps(result, indent=2))
                 crawl(link['href'], depth - 1)
         except KeyError as e:
-            print(e)
+            pass
 
 # if __name__ == "__main__":
 #     url = "http://en.wikipedia.org/wiki"
