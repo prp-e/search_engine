@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import sys 
 
 def crawl(url, depth, results):
     try:
@@ -35,3 +36,8 @@ def crawl(url, depth, results):
         if 'http' in link['href']:
             print(link['href'])
             crawl(link['href'], depth - 1, results)
+
+if __name__ == "__main__":
+    url = sys.argv[1]
+    results = []
+    crawl(url, 5, results)
