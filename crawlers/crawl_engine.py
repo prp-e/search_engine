@@ -10,7 +10,7 @@ def crawl(url, depth=0):
     content = BeautifulSoup(response.text, 'lxml')
 
     try:
-        title = content.find('title')
+        title = content.find('title').text 
         description = ''
 
         for tag in content.findAll():
