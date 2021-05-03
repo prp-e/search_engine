@@ -13,9 +13,8 @@ def crawl(url, depth=0):
         title = content.find('title').text 
         description = ''
 
-        for tag in content.findAll():
-            if tag == 'p':
-                description += tag.text.strip().replace('\n', ' ')
+        for tag in content.findAll('p'):
+            description += tag.text.strip().replace('\n', ' ')
     except:
         return
 
