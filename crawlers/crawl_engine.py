@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-def crawl(url, depth):
+def crawl(url, results, depth):
     try:
         response = requests.get(url)
     except:
@@ -25,4 +25,13 @@ def crawl(url, depth):
         "description": description
     }
 
-    return result
+    results.append(result)
+    if depth == 0:
+        return 
+
+    links = content.findAll('a')
+
+    for link in links:
+        if 'http' in link['href']:
+            print(link['href'])
+            crawl(link['href'], depth - 1)
