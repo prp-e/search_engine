@@ -8,6 +8,11 @@ I always knew how search engines work, but I never tried to make one. In this pr
 
 For all those steps, I have plans. I haven't decided about the database I'll use yet, but I am almost sure how I'll perform search (funny, isn't it?) and about the crawler, I almost wrote the whole goddamn thing. 
 
+## TODO 
+
+- [ ] Find a suitable database for indexing crawled material.
+- [ ] Connecting this thing to a database
+
 ## Technologies Used
 
 * __Programming Language__: Python (Version 3.8 used, but there should be no problems for older or newer ones.)
