@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-def crawl(url, depth=0):
+def crawl(url, depth):
     try:
         response = requests.get(url)
     except:
