@@ -24,7 +24,7 @@ def crawl(url, depth):
     result = {
         "url": url, 
         "title": title, 
-        #"description": description
+        "description": description
     }
 
     if depth == 0:
