@@ -34,4 +34,4 @@ def crawl(url, depth, results):
     for link in links:
         if 'http' in link['href']:
             print(link['href'])
-            crawl(link['href'], depth - 1)
+            crawl(link['href'], depth - 1, results)
