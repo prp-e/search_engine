@@ -6,7 +6,7 @@ import sys
 def crawl(url, depth):
     try:
         response = requests.get(url)
-    except:
+    except UnboundLocalError:
         print(f"Failed to crawl {url}")
         
     content = BeautifulSoup(response.text, 'lxml')
