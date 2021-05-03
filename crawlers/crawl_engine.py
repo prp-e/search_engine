@@ -40,6 +40,7 @@ def crawl(url, depth, results):
 
 if __name__ == "__main__":
     url = sys.argv[1]
+    url = "http://" + url
     results = []
     crawl(url, 5, results)
 
