@@ -36,8 +36,8 @@ def crawl(url, depth):
         try:
             if 'http' in link['href']:
                 #print(json.dumps(result, indent=2))
-                print({'title': title, 'url': link['href']})
                 crawl(link['href'], depth - 1)
+                print({'title': title, 'url': link['href']})
         except KeyError as e:
             print(e)
 
