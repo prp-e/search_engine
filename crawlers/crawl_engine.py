@@ -39,8 +39,7 @@ def crawl(url, depth, results):
             crawl(link['href'], depth - 1, results)
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-    url = "http://" + url
+    url = "http://en.wikipedia.org/wiki"
     results = []
     crawl(url, 5, results)
 
