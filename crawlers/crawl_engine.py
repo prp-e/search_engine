@@ -37,10 +37,7 @@ def crawl(url, depth):
         try:
             if 'http' in link['href']:
                 crawl(link['href'], depth - 1)
-            
-            if 'http' not in link['href']:
-                link = url + '/' + link['href']
-                crawl(link, depth - 1)
+                
         except KeyError as e:
             pass
 
