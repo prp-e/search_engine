@@ -1,7 +1,12 @@
 from bs4 import BeautifulSoup
 import json 
+import pymongo
 import requests
 import sys 
+
+DB_CONNECTION = pymongo.MongoClient('mongodb://127.0.0.1:27017')
+DB = DB_CONNECTION.search_results 
+INDEXED_LINKS = DB.indexed_results 
 
 def crawl(url, depth):
     try:
@@ -28,6 +33,8 @@ def crawl(url, depth):
         "description": description
     }
 
+    INDEXED_LINKS.insert_one(result)
+
     if depth == 0:
         return 
 
@@ -37,10 +44,6 @@ def crawl(url, depth):
         try:
             if 'http' in link['href']:
                 crawl(link['href'], depth - 1)
-                
+
         except KeyError as e:
             pass
-
-# if __name__ == "__main__":
-#     url = "http://en.wikipedia.org/wiki"
-#     crawl(url, 5)
