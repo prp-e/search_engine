@@ -34,6 +34,13 @@ def crawl(url, depth):
     }
 
     INDEXED_LINKS.insert_one(result)
+    INDEXED_LINKS.create_index(
+        [
+            ('url', pymongo.TEXT),
+            ('title', pymongo.TEXT), 
+            ('description', pymongo.TEXT)
+        ]
+    )
 
     if depth == 0:
         return 
