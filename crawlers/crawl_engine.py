@@ -5,6 +5,7 @@ import sys
 
 def crawl(url, depth):
     try:
+        print(f"crawling {url} in depth of {depth}")
         response = requests.get(url)
     except UnboundLocalError:
         print(f"Failed to crawl {url}")
@@ -35,7 +36,6 @@ def crawl(url, depth):
     for link in links:
         try:
             if 'http' in link['href']:
-                print(json.dumps(result, indent=2))
                 crawl(link['href'], depth - 1)
         except KeyError as e:
             pass
